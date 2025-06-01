@@ -1,0 +1,177 @@
+openapi: 3.0.0
+info:
+  title: Issue Tracker
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000
+externalDocs:
+  description: GitHub Repository
+  url: https://github.com/ak-ironix/IssueTracker
+tags:
+- name: Issues
+  description: Issues create, update, author right and get
+- name: Users
+  description: Get user list and create user
+- name: Posts
+  description: Get all posts or create post for a particular Issue
+paths:
+  /api/v1/home:
+    post:
+      tags:
+        - Issues
+      summary: POST_Issues
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                userId: UserId
+                title: YourIssueTitle
+                status: Pending
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: number
+          example: Bearer YourJWTToken
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Issues
+      summary: GET_Issues
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: number
+          example: Bearer YourJWTToken
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/home/{issueId}:
+    parameters:
+      - name: issueId
+        in: path
+        required: true
+        schema:
+          type: integer
+    put:
+      tags:
+        - Issues
+      summary: UpdateIssues
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: YourUpdatedStatus
+                title: YourUpdatedTitle
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Bearer YourJWTToken
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Issues
+      summary: POST_GrantRight
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                coauthor: UserIdYouWantToGrantAccess
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: number
+          example: Bearer OriginalAuthorJWTToken
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/users:
+    post:
+      tags:
+        - Users
+      summary: POST_User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: YourUserName
+                designation: YourUserDesignation
+                email: YourUserEmail
+                password: YourUserPassword
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Users
+      summary: GET_AllUsers
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: number
+          example: Bearer YourJWTToken
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/issue/{issueId}:
+    parameters:
+      - name: issueId
+        in: path
+        required: true
+        schema:
+          type: integer
+    post:
+      tags:
+        - Posts
+      summary: POST_Post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                authorId: InsertAuthorId
+                postText: YourTextHere
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Posts
+      summary: GET_AllPosts
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
