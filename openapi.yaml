@@ -6,14 +6,14 @@ servers:
   - url: http://localhost:5000
 externalDocs:
   description: GitHub Repository
-  url: https://github.com/ak-ironix/IssueTracker
+  url: https://github.com/somyak85/IssueTracker.git
 tags:
-- name: Issues
-  description: Issues create, update, author right and get
-- name: Users
-  description: Get user list and create user
-- name: Posts
-  description: Get all posts or create post for a particular Issue
+  - name: Issues
+    description: Issues create, update, author right and get
+  - name: Users
+    description: Get user list and create user
+  - name: Posts
+    description: Get all posts or create post for a particular Issue
 paths:
   /api/v1/home:
     post:
@@ -36,7 +36,7 @@ paths:
             type: number
           example: Bearer YourJWTToken
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json: {}
@@ -51,7 +51,7 @@ paths:
             type: number
           example: Bearer YourJWTToken
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json: {}
@@ -81,7 +81,7 @@ paths:
             type: string
           example: Bearer YourJWTToken
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json: {}
@@ -103,7 +103,7 @@ paths:
             type: number
           example: Bearer OriginalAuthorJWTToken
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json: {}
@@ -123,7 +123,7 @@ paths:
                 email: YourUserEmail
                 password: YourUserPassword
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json: {}
@@ -138,7 +138,7 @@ paths:
             type: number
           example: Bearer YourJWTToken
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json: {}
@@ -162,7 +162,7 @@ paths:
                 authorId: InsertAuthorId
                 postText: YourTextHere
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json: {}
@@ -171,7 +171,7 @@ paths:
         - Posts
       summary: GET_AllPosts
       responses:
-        '200':
+        "200":
           description: Successful response
           content:
             application/json: {}
